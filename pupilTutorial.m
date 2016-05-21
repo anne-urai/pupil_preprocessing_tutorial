@@ -60,10 +60,13 @@ data.trial{1}(find(strcmp(data.label, 'EyePupil')==1),:) = newpupil;
 
 % ============================================== %
 % (optional): regress out blink- and saccade-linked pupil response
-% see https://tknapen.github.io/science/fir_deconvolution/
+% http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0155574 
 % ============================================== %
 
-data = blink_regressout(data, blinksmp, saccsmp, plotMe, 0);
+pupildata = data.trial{1}(~cellfun(@isempty, strfind(lower(data.label), 'eyepupil')),:);
+newpupil = blink_regressout(pupildata, data.fsample, blinksmp, saccsmp, 1, addBackSlowDrift);
+% put back in fieldtrip format
+data.trial{1}(~cellfun(@isempty, strfind(lower(data.label), 'eyepupil')),:) = newpupil;
 
 % zscore since we work with the bandpassed signal
 data.trial{1}(find(strcmp(data.label, 'EyePupil')==1),:) = ...

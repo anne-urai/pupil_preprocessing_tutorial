@@ -11,7 +11,7 @@
 
 % setup path
 clear; clc; close all;
-thispath = '~/Dropbox/code/pupilTutorial/';
+thispath = '~/Dropbox/code/PupilPreprocessing/';
 addpath(thispath);
 
 % first, define the asc filename
@@ -64,7 +64,7 @@ data.trial{1}(find(strcmp(data.label, 'EyePupil')==1),:) = newpupil;
 % ============================================== %
 
 pupildata = data.trial{1}(~cellfun(@isempty, strfind(lower(data.label), 'eyepupil')),:);
-newpupil = blink_regressout(pupildata, data.fsample, blinksmp, saccsmp, 1, addBackSlowDrift);
+newpupil = blink_regressout(pupildata, data.fsample, blinksmp, saccsmp, 1, 1);
 % put back in fieldtrip format
 data.trial{1}(~cellfun(@isempty, strfind(lower(data.label), 'eyepupil')),:) = newpupil;
 
@@ -133,5 +133,5 @@ ylabel('Pupil response (z)');
 % save file
 % ==================================================================
 
-filename = regexpresp(ascFile, 'asc', 'mat');
+filename = regexprep(ascFile, 'asc', 'mat');
 save(filename, 'data');

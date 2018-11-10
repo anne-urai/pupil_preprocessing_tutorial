@@ -8,7 +8,9 @@ Several of the functions you'll need, for edf2asc conversion and reading in asc 
 The first section of the code is specific to EyeLink (edf) files. See here https://github.com/anne-urai/pupil-memory/blob/master/code/processPupilData.m for a similar approach, but using files from SMI eyetracker (which have to first be converted using BeGaze).
 
 These methods are used in
+
 *Urai, A.E., Braun, A. & Donner, T.H. Pupil-linked arousal is driven by decision uncertainty and alters serial choice bias. Nature Communications 8,14637 (2017).  DOI: 10.1038/ncomms14637*
+
 If you use this code, please cite the paper.
 
 Don't hesitate to get in touch (anne.urai [at] gmail [dot] com) if you have any questions.
